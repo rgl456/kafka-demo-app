@@ -6,12 +6,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class KafkaConsumerService {
 
-    private static final String TOPIC = "basic-topic";
-    private static final String GROUP_ID = "my-basic-group";
+    private static final String TOPIC = "notification-topic";
+    private static final String GROUP_ID = "my-json-group";
 
     @KafkaListener(topics = TOPIC, groupId = GROUP_ID)
-    public void consumeMessage(String receivedMessage){
-        System.out.println("📥 Message Received: " + receivedMessage);
+    public void consumeMessage(NotificationRequest receivedRequest){
+        System.out.println("📥 Message Received (JSON): " + receivedRequest);
     }
 
 }
